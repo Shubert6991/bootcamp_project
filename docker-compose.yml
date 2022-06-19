@@ -1,7 +1,7 @@
 version: '3'
 services:
   db:
-    image: postgres:14
+    image: postgres:14-alpine
     volumes:
       - ./tmp/postgres_data:/var/lib/postgresql
     user: postgres
@@ -16,10 +16,22 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - .:/app
+      - ./ruby_api:/app
     environment: 
       DATABASE_NAME: bootcamp_ruby_development
       DATABASE_USERNAME: bootcamp_ruby
       DATABASE_PASSWORD: bootcamp_ruby
       DATABASE_HOST: db
       DATABASE_PORT: 5432
+  app:
+    depends_on:
+      - api
+    build: ./frontend
+    ports: 
+      - 3050:3000
+    volumes:
+      - './frontend:/app'
+      - '/app/node_modules'
+    environment:
+      REACT_APP_API_HOST: api
+      REACT_APP_API_PORT: 3000
