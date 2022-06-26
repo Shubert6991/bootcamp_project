@@ -1,16 +1,20 @@
 class Api::V1::UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
 
+  rescue_from ActionController::ParameterMissing, with: :handle_parameter_missing
+
   # GET /users
   def index
-    @users = User.all
+    @users = User.all 
 
-    render json: @users
+    # render json: @users
+    render :index
   end
 
   # GET /users/1
   def show
-    render json: @user
+    # render json: @user
+    render :show
   end
 
   # POST /users
@@ -18,7 +22,8 @@ class Api::V1::UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      render json: @user, status: :created, location: @user
+      # render json: @user, status: :created, location: api_v1_user_url(@user)
+      render :show
     else
       render json: @user.errors, status: :unprocessable_entity
     end
@@ -27,7 +32,8 @@ class Api::V1::UsersController < ApplicationController
   # PATCH/PUT /users/1
   def update
     if @user.update(user_params)
-      render json: @user
+      # render json: @user
+      render :show
     else
       render json: @user.errors, status: :unprocessable_entity
     end
@@ -38,6 +44,10 @@ class Api::V1::UsersController < ApplicationController
     @user.destroy
   end
 
+  def handle_parameter_missing(exception)
+    render json: { error: exception.message }, status: :bad_request
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -46,6 +56,6 @@ class Api::V1::UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :last_name, :email, :password, :address1, :address2)
+      params.require(:user).permit(:name, :last_name, :email, :password, :password_confirmation, :address1, :address2, :type, :image)
     end
 end

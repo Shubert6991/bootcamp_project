@@ -3,7 +3,7 @@ services:
   db:
     image: postgres:14-alpine
     volumes:
-      - ./tmp/postgres_data:/var/lib/postgresql
+      - ./ruby_api/tmp/postgres_data:/var/lib/postgresql
     user: postgres
     environment:
       POSTGRES_DB: bootcamp_ruby_development
@@ -19,10 +19,13 @@ services:
       - ./ruby_api:/app
     environment: 
       DATABASE_NAME: bootcamp_ruby_development
-      DATABASE_USERNAME: bootcamp_ruby
-      DATABASE_PASSWORD: bootcamp_ruby
+      DATABASE_USERNAME: "${DATABASE_USERNAME}"
+      DATABASE_PASSWORD: "${DATABASE_USERNAME}"
       DATABASE_HOST: db
       DATABASE_PORT: 5432
+      AWS_REGION: "${DATABASE_USERNAME}"
+      AWS_ACCESS_KEY_ID: "${DATABASE_USERNAME}"
+      AWS_SECRET_ACCESS_KEY: "${DATABASE_USERNAME}"
   app:
     depends_on:
       - api
