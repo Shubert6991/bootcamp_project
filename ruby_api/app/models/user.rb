@@ -15,8 +15,8 @@
 #  user_type            :int
 #
 class User < ApplicationRecord
+  require 'securerandom'
   include Rails.application.routes.url_helpers
-
   
   validates :name, presence: true
   validates :last_name, presence: true

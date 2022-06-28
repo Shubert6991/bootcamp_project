@@ -5,3 +5,4 @@ json.email @user.email
 json.address1 @user.address1
 json.address2 @user.address2
 json.image_url @user.image_url
+json.user_type @user.user_type

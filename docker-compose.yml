@@ -26,16 +26,23 @@ services:
       AWS_REGION: "${DATABASE_USERNAME}"
       AWS_ACCESS_KEY_ID: "${DATABASE_USERNAME}"
       AWS_SECRET_ACCESS_KEY: "${DATABASE_USERNAME}"
+      RAILS_DEVELOPMENT_HOSTS: app, localhost
+      RAILS_HOST: localhost
+      RAILS_PORT: 3000
+    command: rails db:migrate
   app:
     depends_on:
       - api
     build: ./frontend
     ports: 
-      - 3050:3000
+      - 3050:3050
     volumes:
       - './frontend:/app'
       - '/app/node_modules'
     environment:
       REACT_APP_API_HOST: api
       REACT_APP_API_PORT: 3000
-    command: npm start
+      CHOKIDAR_USEPOLLING: true
+      FAST_REFRESH: false
+      NODE_ENV: development
+      PORT: 3050

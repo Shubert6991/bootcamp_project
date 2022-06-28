@@ -47,13 +47,12 @@ ActiveRecord::Schema.define(version: 2022_06_24_042335) do
     t.string "name"
     t.string "last_name"
     t.string "email"
+    t.string "password_digest"
     t.string "address1"
     t.string "address2"
+    t.integer "user_type", default: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.text "image", default: "https://bootcamp-ruby-shubert.s3.us-west-1.amazonaws.com/default/profile.png"
-    t.integer "user_type", default: 2
-    t.string "password_digest"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
