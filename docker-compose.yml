@@ -29,7 +29,7 @@ services:
       RAILS_DEVELOPMENT_HOSTS: app, localhost
       RAILS_HOST: localhost
       RAILS_PORT: 3000
-    command: rails db:migrate
+    command: bash -c "bundle install && rails s -b 0.0.0.0 && rails db:migrate"
   app:
     depends_on:
       - api

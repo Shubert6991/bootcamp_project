@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  skip_before_action :authenticate_request, only: [:create]
+  skip_before_action :authenticate_request, only: [:index, :create]
   before_action :set_user, only: [:show, :update, :destroy]
 
   rescue_from ActionController::ParameterMissing, with: :handle_parameter_missing
