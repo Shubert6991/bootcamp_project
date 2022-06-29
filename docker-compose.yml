@@ -12,7 +12,7 @@ services:
   api:
     depends_on: 
       - db
-    build: ./ruby_api
+    image: shubert6991/bootcamp_rails_api
     ports:
       - 3000:3000
     volumes:
@@ -31,9 +31,7 @@ services:
       RAILS_PORT: 3000
     command: bash -c "bundle install && rails s -b 0.0.0.0 && rails db:migrate"
   app:
-    depends_on:
-      - api
-    build: ./frontend
+    image: shubert6991/bootcamp_rails_app
     ports: 
       - 3050:3050
     volumes:
