@@ -9,7 +9,7 @@ Is a project with the things that I learned from the ruby on rails bootcamp, it 
 - Postgresql
 
 ## Live
-- [App](http://ec2-54-241-136-139.us-west-1.compute.amazonaws.com:3050)
+- [App](http://ec2-54-219-124-29.us-west-1.compute.amazonaws.com:3050)
 - [API](http://ec2-3-101-26-149.us-west-1.compute.amazonaws.com:3000)
 
 ## Ruby on Rails API
