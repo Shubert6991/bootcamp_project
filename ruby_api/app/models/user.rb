@@ -23,6 +23,7 @@ class User < ApplicationRecord
   validates :address1, presence: true
 
   has_one_attached :image
+  has_many :shopping_carts
 
   def image_url
     if image.attached?
