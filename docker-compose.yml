@@ -3,7 +3,7 @@ services:
   db:
     image: postgres:14-alpine
     volumes:
-      - ./tmp/postgres_data:/var/lib/postgresql
+      - ./ruby_api/tmp/postgres_data:/var/lib/postgresql
     user: postgres
     environment:
       POSTGRES_DB: bootcamp_ruby_development
@@ -12,26 +12,35 @@ services:
   api:
     depends_on: 
       - db
-    build: ./ruby_api
+    image: shubert6991/bootcamp_rails_api
     ports:
       - 3000:3000
     volumes:
       - ./ruby_api:/app
     environment: 
       DATABASE_NAME: bootcamp_ruby_development
-      DATABASE_USERNAME: bootcamp_ruby
-      DATABASE_PASSWORD: bootcamp_ruby
+      DATABASE_USERNAME: "${DATABASE_USERNAME}"
+      DATABASE_PASSWORD: "${DATABASE_USERNAME}"
       DATABASE_HOST: db
       DATABASE_PORT: 5432
+      AWS_REGION: "${DATABASE_USERNAME}"
+      AWS_ACCESS_KEY_ID: "${DATABASE_USERNAME}"
+      AWS_SECRET_ACCESS_KEY: "${DATABASE_USERNAME}"
+      RAILS_DEVELOPMENT_HOSTS: app, localhost
+      RAILS_HOST: localhost
+      RAILS_PORT: 3000
+    command: bash -c "bundle install && rails s -b 0.0.0.0 && rails db:migrate"
   app:
-    depends_on:
-      - api
-    build: ./frontend
+    image: shubert6991/bootcamp_rails_app
     ports: 
-      - 3050:3000
+      - 3050:3050
     volumes:
       - './frontend:/app'
       - '/app/node_modules'
     environment:
       REACT_APP_API_HOST: api
       REACT_APP_API_PORT: 3000
+      CHOKIDAR_USEPOLLING: true
+      FAST_REFRESH: false
+      NODE_ENV: development
+      PORT: 3050
