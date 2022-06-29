@@ -40,6 +40,6 @@ Is a project with the things that I learned from the ruby on rails bootcamp, it 
 ```
 
 ## React App Screenshot
-
+![screenshot](./screenshot.png)
 ## To run with docker
 ``docker compose up -d``
