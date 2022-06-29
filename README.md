@@ -10,7 +10,7 @@ Is a project with the things that I learned from the ruby on rails bootcamp, it 
 
 ## Live
 - [App](http://ec2-54-219-124-29.us-west-1.compute.amazonaws.com:3050)
-- [API](http://ec2-3-101-26-149.us-west-1.compute.amazonaws.com:3000)
+- [API](http://3.101.26.149:3000)
 
 ## Ruby on Rails API
 ### enpoints example
