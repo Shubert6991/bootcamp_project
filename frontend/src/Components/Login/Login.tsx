@@ -45,6 +45,9 @@ function Login() {
           console.log(response.data);
           setSuccessMessage("Login Sucessful")
           sessionStorage.setItem('token', response.data.token);
+          sessionStorage.setItem('uid', response.data.uid);
+          sessionStorage.setItem('userPic', response.data.img);
+          sessionStorage.setItem('userType', response.data.utype);
           setTimeout(() => navigate("/", { replace: true }), 1500);
         })
         .catch(error => {
