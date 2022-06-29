@@ -3,16 +3,15 @@
 # Table name: users
 #
 #  id              :bigint           not null, primary key
-#  name            :string(255)
-#  last_name       :string(255)
-#  email           :string(255)
-#  password        :string(255)
-#  address1        :string(255)
-#  address2        :string(255)
+#  name            :string
+#  last_name       :string
+#  email           :string
+#  password_digest :string
+#  address1        :string
+#  address2        :string
+#  user_type       :integer          default(2)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  image           :text(65535)
-#  user_type            :int
 #
 class User < ApplicationRecord
   require 'securerandom'
