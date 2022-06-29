@@ -32,8 +32,7 @@ function RegisterUser() {
 
     const form = event.currentTarget;
     if (form.checkValidity() === true) {
-      // const url = `http://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/api/v1/users`;
-      const url = `http://localhost:${process.env.REACT_APP_API_PORT}/api/v1/users`;
+      const url = `http://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/api/v1/users`;
 
       // new FormData to send as multipart/form to api
       const formData = new FormData();

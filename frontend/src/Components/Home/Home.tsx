@@ -32,13 +32,13 @@ function Home() {
     let url = ""
     switch(action){
       case 1:
-        url = `http://localhost:${process.env.REACT_APP_API_PORT}/api/v1/products`
+        url = `http://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/api/v1/products`
         break;
       case 2:
-        url = `http://localhost:${process.env.REACT_APP_API_PORT}/api/v1/productsbyprice`
+        url = `http://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/api/v1/productsbyprice`
         break;
       default:
-        url = `http://localhost:${process.env.REACT_APP_API_PORT}/api/v1/products`
+        url = `http://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/api/v1/products`
         break;
     }
 

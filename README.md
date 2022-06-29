@@ -9,8 +9,8 @@ Is a project with the things that I learned from the ruby on rails bootcamp, it 
 - Postgresql
 
 ## Live
-- [App](http://ec2-54-241-247-120.us-west-1.compute.amazonaws.com:3050)
-- [API](http://ec2-54-241-247-120.us-west-1.compute.amazonaws.com:3050)
+- [App](http://ec2-54-241-136-139.us-west-1.compute.amazonaws.com:3050)
+- [API](http://ec2-3-101-26-149.us-west-1.compute.amazonaws.com:3000)
 
 ## Ruby on Rails API
 ### enpoints example
@@ -39,7 +39,7 @@ Is a project with the things that I learned from the ruby on rails bootcamp, it 
 ]
 ```
 
-## React App Screenshot
+## React App Screenshot 
 ![screenshot](./screenshot.png)
 ## To run with docker
 ``docker compose up -d``
